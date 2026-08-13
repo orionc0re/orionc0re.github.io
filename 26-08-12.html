@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="stylep2.css">
+    <h1>2026-08-12</h1>
+    <h2>this log documents how i made <br>
+      <a href="https://editor.p5js.org/orioncore/full/YU_rSaWtq" target="_self">this random colour generator.</a>
+    </h2>
+  </head>
+  <body>
+    <main>
+     <p>thing (singular) made today:<br>
+       turning pink generator into any colour generator using the createSlider element:<br>
+       (i did use rmit's AI Val during this, but only as a reference. i hand wrote the code and asked it to elaborate any decisions i didn't understand) <br>
+       using the 'let' function to declare new variables to control the values of r, g, and b separately. <br>
+       bgColor is used so the code stores the last colour generated as the background:<br>
+       <pre>
+       let sliderRed;
+        let sliderGreen;
+        let sliderBlue;
+        let bgColor;
+         </pre>
+     </p> 
+      <p>
+        draw the canvas, and tell the code what each new variable does <br>
+        (in this case it makes new sliders according to each RGB colour). <br>
+        this will be how we assign them to control the colours later:<br>
+        <pre>
+          //draw the canvas in which we will set our retinas on fire with
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  textAlign(CENTER, CENTER);
+  textSize(windowWidth/20);
+
+  //red slider
+  sliderRed = createSlider (0, 255, 255, 1);
+  sliderRed.position(20, 20);
+  sliderRed.size(200);
+
+  // //green slider
+  sliderGreen = createSlider (0, 255, 255, 1);
+  sliderGreen.position(20, 50);
+  sliderGreen.size(200);
+
+  // //blue slider
+  sliderBlue = createSlider (0, 255, 255, 1);
+  sliderBlue.position(20, 80);
+  sliderBlue.size(200);
+}
+        </pre>
+      </p>
+      <p>
+        declare new variables which is the value from the sliders (defined by slider[Colour].value()), this will be how new colours are generated:
+        <pre>
+          function draw() {
+  let re = sliderRed.value();
+  let gr = sliderGreen.value();
+  let bl = sliderBlue.value();
+        </pre>
+      </p>
+      <p>
+        create labels for the sliders so it tells us the RGB values the colours are generated within. 
+        push and pop probably aren't necessary but it gives me peace of mind:
+        <pre>
+            push();
+  fill(255);
+  textAlign(LEFT, CENTER);
+  textSize(20);
+  text("Red: " + re, 230, 35);
+  text("Green: " + gr, 230, 65);
+  text("Blue: " + bl, 230, 95);
+  pop();
+        </pre>
+      </p>
+      <p>
+        if mouseIsPressed tells the code to generate a new colour between the values defined by variables earlier in the code with re, gr, and bl. <br>
+	      the function randomColourValue is used to constrain the numbers to be between 0 and 255, so that actual colours are generated when you click your mouse. <br>
+        this is also where random() is used to randomise the colours. <br>
+        the (value) in this function is replaced by re, bl, and gr, which returns the value of the sliders, which generates our colours. <br>
+        <pre>
+            //where the magic happens
+  if (mouseIsPressed) {
+    bgColor = color(
+      randomColourValue(re),
+      randomColourValue(gr),
+      randomColourValue(bl),
+    );
+  }
+        </pre>
+      <pre>
+        function randomColourValue(value){
+  return constrain(random(value -15 , value +15), 0, 255);
+}
+      </pre>
+      </p>
+      <p>
+        and finally, because createCanvas(windowWidth, windowHeight) is used, windowResized() just scales the canvas to the size of the browser window, <br>
+        so there's no white spaces when the window changes size:<br>
+        <pre>
+          function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+        </pre>
+        i've also changed the instruction text size, so it scales itself with the size of the browser window:<br>
+        <pre>
+            textSize(windowWidth/20);
+        </pre>
+      </p>
+    </main>
+  </body>
+</html>
