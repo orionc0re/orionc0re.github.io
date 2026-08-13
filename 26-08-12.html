@@ -62,7 +62,7 @@ function setup() {
         create labels for the sliders so it tells us the RGB values the colours are generated within. 
         push and pop probably aren't necessary but it gives me peace of mind:
         <pre>
-            push();
+push();
   fill(255);
   textAlign(LEFT, CENTER);
   textSize(20);
@@ -78,7 +78,7 @@ function setup() {
         this is also where random() is used to randomise the colours. <br>
         the (value) in this function is replaced by re, bl, and gr, which returns the value of the sliders, which generates our colours. <br>
         <pre>
-            //where the magic happens
+//where the magic happens
   if (mouseIsPressed) {
     bgColor = color(
       randomColourValue(re),
@@ -88,7 +88,7 @@ function setup() {
   }
         </pre>
       <pre>
-        function randomColourValue(value){
+function randomColourValue(value){
   return constrain(random(value -15 , value +15), 0, 255);
 }
       </pre>
@@ -97,7 +97,7 @@ function setup() {
         and finally, because createCanvas(windowWidth, windowHeight) is used, windowResized() just scales the canvas to the size of the browser window, <br>
         so there's no white spaces when the window changes size:<br>
         <pre>
-          function windowResized() {
+function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
         </pre>
