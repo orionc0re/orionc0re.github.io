@@ -12,3 +12,9 @@
 body {
   font-family: :"Comic Relief"
 }
+@font-face {
+    font-family: ComicRelief-Regular;
+    src: url("../orionc0re.github.io/ComicRelief-Regular.ttf") format('truetype');
+    font-weight: regular;
+    font-style: normal;
+}
