@@ -28,7 +28,7 @@
         (in this case it makes new sliders according to each RGB colour). <br>
         this will be how we assign them to control the colours later:<br>
         <pre>
-          //draw the canvas in which we will set our retinas on fire with
+//draw the canvas in which we will set our retinas on fire with
 function setup() {
   createCanvas(windowWidth, windowHeight);
   textAlign(CENTER, CENTER);
@@ -54,7 +54,7 @@ function setup() {
       <p>
         declare new variables which is the value from the sliders (defined by slider[Colour].value()), this will be how new colours are generated:
         <pre>
-          function draw() {
+function draw() {
   let re = sliderRed.value();
   let gr = sliderGreen.value();
   let bl = sliderBlue.value();
@@ -71,7 +71,7 @@ push();
   text("Red: " + re, 230, 35);
   text("Green: " + gr, 230, 65);
   text("Blue: " + bl, 230, 95);
-  pop();
+pop();
         </pre>
       </p>
       <p>
